@@ -1,13 +1,15 @@
 package com.backend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="customer")
+@Table(name="customers")
 public class CustomerEntity {
 
     @Id
@@ -16,10 +18,6 @@ public class CustomerEntity {
     private String name;
     private String phone;
     private String address;
-
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "adopter")
-    private Set<PetEntity> pets = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -53,11 +51,18 @@ public class CustomerEntity {
         this.address = address;
     }
 
-    public Set<PetEntity> getPets() {
-        return pets;
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    private UserEntity user;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    private Set<AdoptPetEntity> adoptPets;
+
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setPets(Set<PetEntity> pets) {
-        this.pets = pets;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }

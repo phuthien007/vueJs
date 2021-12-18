@@ -7,12 +7,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="category")
+@Table(name="categories")
 public class CategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String name;
     private String code;
 

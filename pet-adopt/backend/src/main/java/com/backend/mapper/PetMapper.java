@@ -10,8 +10,7 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface PetMapper {
 
-    @Mapping(source = "category.name", target = "categoryName")
-    @Mapping(source = "adopter.name", target = "adopterName")
+    @Mapping(source = "category.id", target = "categoryId")
     public  PetDto toDTO(PetEntity e);
 
     @InheritInverseConfiguration

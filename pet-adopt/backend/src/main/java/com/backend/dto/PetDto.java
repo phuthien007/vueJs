@@ -6,11 +6,8 @@ public class PetDto {
     private Long id;
     private String name;
     private String code;
-    private String categoryName;
+    private Long categoryId;
     private String image;
-    private Date arriveredDate;
-    private Date adoptedDate;
-    private String adopterName;
     private String description;
 
     public Long getId() {
@@ -37,14 +34,6 @@ public class PetDto {
         this.code = code;
     }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
     public String getImage() {
         return image;
     }
@@ -53,28 +42,12 @@ public class PetDto {
         this.image = image;
     }
 
-    public Date getArriveredDate() {
-        return arriveredDate;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setArriveredDate(Date arriveredDate) {
-        this.arriveredDate = arriveredDate;
-    }
-
-    public Date getAdoptedDate() {
-        return adoptedDate;
-    }
-
-    public void setAdoptedDate(Date adoptedDate) {
-        this.adoptedDate = adoptedDate;
-    }
-
-    public String getAdopterName() {
-        return adopterName;
-    }
-
-    public void setAdopterName(String adopterName) {
-        this.adopterName = adopterName;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getDescription() {

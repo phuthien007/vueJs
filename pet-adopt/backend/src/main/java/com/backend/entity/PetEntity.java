@@ -1,44 +1,43 @@
 package com.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Table(name="pet")
+@Table(name = "pets")
 public class PetEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Long id;
+    private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.NO_ACTION)
-    @JoinColumn(name="category_id", referencedColumnName = "id")
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     private CategoryEntity category;
     private String name;
     private String code;
-
     private String image;
-
-    @Column(name="arrivered_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date arriveredDate;
-
-    @Column(name="adopted_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date adoptedDate;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
-    @JoinColumn(name="adopter_id", referencedColumnName = "id")
-    private CustomerEntity adopter;
-
     private String description;
+    private String status;
+
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+    private Set<AdoptPetEntity> adoptPets;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getImage() {
         return image;
@@ -88,27 +87,4 @@ public class PetEntity {
         this.code = code;
     }
 
-    public Date getArriveredDate() {
-        return arriveredDate;
-    }
-
-    public void setArriveredDate(Date arriveredDate) {
-        this.arriveredDate = arriveredDate;
-    }
-
-    public Date getAdoptedDate() {
-        return adoptedDate;
-    }
-
-    public void setAdoptedDate(Date adoptedDate) {
-        this.adoptedDate = adoptedDate;
-    }
-
-    public CustomerEntity getAdopter() {
-        return adopter;
-    }
-
-    public void setAdopter(CustomerEntity adopter) {
-        this.adopter = adopter;
-    }
 }

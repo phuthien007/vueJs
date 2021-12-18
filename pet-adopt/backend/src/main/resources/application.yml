@@ -13,5 +13,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+    default-property-inclusion: non_null
 
