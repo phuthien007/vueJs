@@ -1,8 +1,6 @@
-import DetailInformationPage from '../views/DetailInformationPage.vue'
-// import HelloWorld from '../components/HelloWorld.vue'
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+import DetailClass from '../components/DetailClass.vue'
 
 Vue.use(VueRouter);
 const router = new VueRouter({
@@ -11,7 +9,6 @@ const router = new VueRouter({
       path: '*',
       redirect:'/admin'
       ,
-              
     },
     {
       path: '/login',
@@ -24,11 +21,11 @@ const router = new VueRouter({
       redirect:'/login',
               
     },
-  {
-    path: '/admin',
-    component: DetailInformationPage
-    ,
-  },
+  // {
+  //   path: '/admin',
+  //   redirect : '/admin/lists'
+  //   ,
+  // },
   {
     path: '/admin/action-outdoor',
     name: 'action-outdoor',
@@ -66,8 +63,8 @@ const router = new VueRouter({
   }
   ,
   {
-    path: '/admin/statis',
-    name: 'statis',
+    path: '/admin',
+    name: 'admin',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -81,6 +78,15 @@ const router = new VueRouter({
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/MenuPage.vue')
+  }
+  ,
+  {
+    path: '/admin/class/:id',
+    name: 'detail-class',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: DetailClass
   }
 ]})
 export default router;

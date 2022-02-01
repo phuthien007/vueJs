@@ -1,12 +1,10 @@
 <template>
-<v-card height="100%">
+<div height="100%">
     <!-- <v-navigation-drawer permanent> -->
     <v-list-item>
         <v-list-item-content>
             <v-img lazy-src="../assets/logo-pc.png" max-height="150" max-width="250" src="../assets/logo-pc.png"></v-img>
-            <v-list-item-title class="text-center text-h6 pt-6">
-                Trang quản lý
-            </v-list-item-title>
+          
         </v-list-item-content>
     </v-list-item>
 
@@ -35,7 +33,7 @@
     </v-list>
     <!-- </v-navigation-drawer> -->
 
-</v-card>
+</div>
 </template>
 
 <script>
@@ -44,8 +42,8 @@ export default {
 
     data: () => ({
         items: [{
-                title: 'Thông tin cá nhân',
-                icon: 'mdi-account',
+                title: 'Thống kê',
+                icon: 'mdi-view-dashboard',
                 link: '/admin'
             },
             {
@@ -53,11 +51,7 @@ export default {
                 icon: 'mdi-clipboard-list',
                 link: '/admin/lists'
             },
-            {
-                title: 'Thống kê',
-                icon: 'mdi-view-dashboard',
-                link: '/admin/statis'
-            },
+            
             {
                 title: 'Chi phí',
                 icon: 'mdi-cash-multiple',
@@ -96,15 +90,15 @@ export default {
                 if (url[1] == 'lists') {
                     return 1;
                 } else if (url[1] == 'statis') {
-                    return 2;
+                    return 0;
                 } else if (url[1] == 'fee-school') {
-                    return 3;
+                    return 2;
                 } else if (url[1] == 'action-outdoor') {
-                    return 4;
+                    return 3;
                 } else if (url[1] == 'menu') {
-                    return 5;
+                    return 4;
                 } else if (url[1] == 'settings') {
-                    return 6;
+                    return 5;
                 } else {
                     return 0;
                 }
